@@ -62,7 +62,7 @@ def proceededQuery(prompt:str):
 
     Thirdly they might need in detail deep answer, so dive deep into the users doubt; refine and give a optimal yet a bit detailed answer 
 
-    Note: Follow the instruction strictly, being a "tutor" you have to be calm and be able to communicate to them as soft as possible and for the better understanding refer the previous doubts and br revelant. The refering of pervious doubt is to just create a converstion between you and the user; which is stored in{st.session_state.messae}"""
+    Note: Follow the instruction strictly, being a "tutor" you have to be calm and be able to communicate to them as soft as possible and for the better understanding refer the previous doubts and br revelant. The refering of pervious doubt is to just create a converstion between you and the user; which is stored in{st.session_state.messages}"""
         )
 
     chat_session = model.start_chat(
