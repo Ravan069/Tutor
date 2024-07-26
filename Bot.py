@@ -19,22 +19,6 @@ def download_prompts_csv():
   csv_file.seek(0)
   return csv_file.getvalue(), "assistant_prompts.csv", "text/csv"
 
-# Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-            
-for message in st.session_state.messages:
-    with st.chat_message(message["role"]):
-        st.markdown(message["content"])
-        
-    # Accept user inputstr
-if prompt := st.chat_input("What is up?", key = "input"):
-    # Display user message in chat message container
-    with st.chat_message("user"):
-                st.markdown(prompt)
-            # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
-
 def proceededQuery(prompt:str):
     genai.configure(api_key = st.secrets['API'])
     generation_config = {
@@ -85,6 +69,22 @@ def proceededQuery(prompt:str):
     response = chat_session.send_message(f"{prompt}")
 
     return response
+# Initialize chat history
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+            
+for message in st.session_state.messages:
+    with st.chat_message(message["role"]):
+        st.markdown(message["content"])
+        
+    # Accept user inputstr
+if prompt := st.chat_input("What is up?", key = "input"):
+    # Display user message in chat message container
+    with st.chat_message("user"):
+                st.markdown(prompt)
+            # Add user message to chat history
+    st.session_state.messages.append({"role": "user", "content": prompt})
+
             
 data = proceededQuery(prompt)
 
