@@ -67,7 +67,7 @@ def proceededQuery(prompt:str):
 
     chat_session = model.start_chat(
         history=[
-             st.sesssion_state.messages
+             
         ]
     )
     response = chat_session.send_message(f"{prompt}")
