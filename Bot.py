@@ -2,13 +2,6 @@ import streamlit as st
 import io
 import csv
 import google.generativeai as genai
-import os
-from dotenv import load_dotenv
-import api
-
-load_dotenv()  # Load environment variables from .env
-api_key = os.environ.get('API')
-
 
 new_chat = st.button("New Chat")
 if new_chat:
@@ -43,7 +36,7 @@ if prompt := st.chat_input("What is up?", key = "input"):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
 def proceededQuery(prompt:str):
-    genai.configure(api_key = api_key)
+    genai.configure(api_key = st.secrets['API'])
     generation_config = {
         "temperature": 1,
         "top_p": 0.95,
