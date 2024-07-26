@@ -43,7 +43,7 @@ if prompt := st.chat_input("What is up?", key = "input"):
     st.session_state.messages.append({"role": "user", "content": prompt})
 
 def proceededQuery(prompt:str):
-    genai.configure(api_key = api.API)
+    genai.configure(api_key = api_key)
     generation_config = {
         "temperature": 1,
         "top_p": 0.95,
