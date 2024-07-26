@@ -3,6 +3,9 @@ import io
 import csv
 import google.generativeai as genai
 
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+            
 new_chat = st.button("New Chat")
 if new_chat:
      st.session_state.messages = []
@@ -71,9 +74,6 @@ def proceededQuery(prompt:str):
 
     return response
 # Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-            
 for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
